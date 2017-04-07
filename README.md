@@ -1,28 +1,94 @@
-# AngularWebpack
+# This is an example of how to create and deploy an angular 2+ app to production (Heroku) using the angular cli + AOT and webpack
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+The Heroku link to this example site is [here](https://cryptic-sea-49784.herokuapp.com/)
 
-## Development server
+# Setup
+[how to setup angular, the cli and node correctly](https://gist.github.com/milesstanfield/17f980ad4ed6d038a255f8fc3b222add#file-angular-and-node-setup-md)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+# Create a new angular app with the cli
+**note:** i've compiled some [basic cli usage docs](https://gist.github.com/milesstanfield/147de88d83e5b4eb790b7dd4fb615230#file-angular-cli-usage-md) you might find useful
+```
+ng new my-angular-app && cd my-angular-app
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+# At this point if you just wanted to use this app in development you are done. simple run this command to serve your app in a dev browser. Continue reading if you wish to deploy to production.
+```
+ng serve -o
+```
 
-## Build
+# Add some scripts to package.json
+```
+"rimraf": "rimraf",
+"clean:aot": "npm run rimraf -- compiled",
+"clean:dist": "npm run rimraf -- dist",
+"build:prod": "npm run clean:dist && npm run clean:aot && npm run build --aot -prod",
+"start:prod": "node server.js",
+"heroku-postbuild": "npm run build:prod"
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+# Add your specific Node and npm versions to the engines key in and add it to package.json
+**hint:** you can find your current versions by `node -v && npm -v`
+```
+  ...
+},
+"engines": {
+  "node": "6.9.0",
+  "npm": "3.10.8"
+}
+```
 
-## Running unit tests
+# Add the cli and cli/compiler dependencies so they can be used in the npm build scripts
+```
+npm install @angular/cli@latest @angular/compiler-cli@latest --save
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# install rimraf dev dependency (cleans up things)
+```
+npm install rimraf --save-dev
+```
 
-## Running end-to-end tests
+# download the barebones express server.js file
+```
+curl -o ./server.js https://raw.githubusercontent.com/milesstanfield/ng4-webpack/master/server.js
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+# install server dependencies for the server.js file
+```
+npm install express method-override --save
+```
 
-## Further help
+# run npm install
+```
+npm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# test that your production build is working
+```
+npm run build:prod && npm run start:prod
+```
+
+# Make sure you have the Heroku toolbelt installed
+```
+brew install heroku
+```
+
+# create a Procfile for Heroku to run the server with
+```
+touch Procfile && echo "web: node server.js" > Procfile
+```
+
+# Commit, deploy and open your new Heroku production app
+```
+git init && git add . && git commit -m 'awesome stuff'
+heroku create
+git push heroku master
+heroku ps:scale web=1
+heroku restart
+heroku open
+```
+
+# Tail the Heroku logs if you have any issues
+```
+heroku logs -t
+```
