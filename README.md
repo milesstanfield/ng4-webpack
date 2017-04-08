@@ -1,4 +1,4 @@
-# This repo walks through how to create an angular app via the cli (1.0.0) and deploy a build to production using webpack
+# This repo walks through how to create an angular app via the cli (1.0.0) and deploy a build to production using webpack + AOT compliation
 
 The Heroku link to this example site is [here](https://cryptic-sea-49784.herokuapp.com/)
 
@@ -23,8 +23,8 @@ ng serve -o
 - Add some scripts to package.json
 ```
 "rimraf": "rimraf",
-"clean:dist": "npm run rimraf -- dist",
-"build:prod": "npm run clean:dist && npm run build --prod",
+"clean": "npm run rimraf -- dist",
+"build:prod": "npm run clean && npm run build --aot --prod",
 "start:prod": "node server.js",
 "heroku-postbuild": "npm run build:prod"
 ```
@@ -64,9 +64,36 @@ curl -o ./server.js https://raw.githubusercontent.com/milesstanfield/ng4-webpack
 npm install express method-override --save
 ```
 
+# webpack configuration
+- eject angular
+```
+ng eject && npm install
+```
+
+- install compression plugin (gzip)
+```
+npm install compression-webpack-plugin --save-dev
+```
+
+- add this constant to the top with the others in `webpack.config.js`
+```
+const webpack = require('webpack');
+const CompressionPlugin = require("compression-webpack-plugin");
+```
+
+- add this to the top of the plugins list
+```
+new CompressionPlugin(),
+new webpack.optimize.UglifyJsPlugin({
+  compress: { warnings: false, screw_ie8 : true },
+  output: { comments: false },
+  mangle: { screw_ie8 : true }
+}),
+```
+
 # test that your production build is working
 ```
-npm install && npm run build:prod && npm run start:prod
+npm run build:prod && npm run start:prod
 ```
 
 # deploying to Heroku
