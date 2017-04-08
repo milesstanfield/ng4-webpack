@@ -1,4 +1,4 @@
-# This is an example of how to create and deploy an angular 2+ app to production (Heroku) using the angular cli + AOT and webpack
+# This is an example of how to create and deploy an angular 2+ app to production (Heroku) using the angular cli and webpack
 
 The Heroku link to this example site is [here](https://cryptic-sea-49784.herokuapp.com/)
 **NOTE:** I am still in the process of getting AOT working and also gzip in the build process
@@ -7,7 +7,7 @@ The Heroku link to this example site is [here](https://cryptic-sea-49784.herokua
 [how to setup angular, the cli and node correctly](https://gist.github.com/milesstanfield/17f980ad4ed6d038a255f8fc3b222add#file-angular-and-node-setup-md)
 
 
-# Create a new angular app with the cli
+# Create an angular app with the cli
 **note:** i've compiled some [basic cli usage docs](https://gist.github.com/milesstanfield/147de88d83e5b4eb790b7dd4fb615230#file-angular-cli-usage-md) you might find useful
 ```
 ng new my-angular-app && cd my-angular-app
@@ -18,17 +18,17 @@ ng new my-angular-app && cd my-angular-app
 ng serve -o
 ```
 
-# Add some scripts to package.json
+# Update package.json
+- Add some scripts to package.json
 ```
 "rimraf": "rimraf",
-"clean:aot": "npm run rimraf -- compiled",
 "clean:dist": "npm run rimraf -- dist",
-"build:prod": "npm run clean:dist && npm run clean:aot && npm run build --prod --aot",
+"build:prod": "npm run clean:dist && npm run build --prod",
 "start:prod": "node server.js",
 "heroku-postbuild": "npm run build:prod"
 ```
 
-# Add your specific Node and npm versions to the engines key in and add it to package.json
+- Add your specific Node and npm versions to the engines key in package.json
 **hint:** you can find your current versions by `node -v && npm -v`
 ```
   ...
@@ -39,28 +39,25 @@ ng serve -o
 }
 ```
 
-# Add the cli and cli/compiler dependencies so they can be used in the npm build scripts
+# update dependencies
+- Add the cli and cli/compiler dependencies so they can be used in the npm build scripts
 ```
-npm install @angular/cli@latest @angular/compiler-cli@latest @angular/animations@latest @angular/platform-server@latest @angular/compiler@latest --save
-```
-
-# make sure the dev angular compiler dependency is the exact same as the others
-```
-npm install @angular/compiler-cli@latest --save-dev
+npm install @angular/cli@latest @angular/compiler-cli@latest --save
 ```
 
-
-# install rimraf dev dependency (cleans up things)
+- install rimraf dev dependency (cleans up things)
 ```
 npm install rimraf --save-dev
 ```
 
-# download the barebones express server.js file
+
+# server setup
+- download the barebones express server.js file
 ```
 curl -o ./server.js https://raw.githubusercontent.com/milesstanfield/ng4-webpack/master/server.js
 ```
 
-# install server dependencies for the server.js file
+- install server dependencies for the server.js file
 ```
 npm install express method-override --save
 ```
@@ -75,17 +72,18 @@ npm install
 npm run build:prod && npm run start:prod
 ```
 
-# Make sure you have the Heroku toolbelt installed
+# deploying to Heroku
+- Make sure you have the Heroku toolbelt installed
 ```
 brew install heroku
 ```
 
-# create a Procfile for Heroku to run the server with
+- create a Procfile for Heroku to run the server with
 ```
 touch Procfile && echo "web: node server.js" > Procfile
 ```
 
-# Commit, deploy and open your new Heroku production app
+- Commit, deploy and open your new Heroku production app
 ```
 git init && git add . && git commit -m 'awesome stuff'
 heroku create
@@ -95,7 +93,7 @@ heroku restart
 heroku open
 ```
 
-# Tail the Heroku logs if you have any issues
+- Tail the Heroku logs if you have any issues
 ```
 heroku logs -t
 ```
