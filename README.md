@@ -12,7 +12,7 @@ The Heroku link to this example site is [here](https://cryptic-sea-49784.herokua
 ng new my-angular-app && cd my-angular-app
 ```
 
-# At this point if you just wanted to use this app in development you are done. simple run this command to serve your app in a dev browser. Continue reading if you wish to deploy to production.
+# Serve your app locally
 ```
 ng serve -o
 ```
