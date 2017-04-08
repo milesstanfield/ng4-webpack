@@ -1,4 +1,4 @@
-# This repo walks through how to create an angular app via the cli (1.0.0) and deploy a build to production using webpack + AOT compliation
+# This repo walks through how to create an angular app via the cli (1.0.0) and deploy a build to production using webpack + AOT compliation + Gzip compression
 
 The Heroku link to this example site is [here](https://cryptic-sea-49784.herokuapp.com/)
 
