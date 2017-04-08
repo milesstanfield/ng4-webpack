@@ -2,6 +2,8 @@
 
 The Heroku link to this example site is [here](https://cryptic-sea-49784.herokuapp.com/)
 
+**Note**: I'm not paying high dollar to keep that site spun up. It may be in a cool down state when you first visit it and could take 30 seconds to spin-up/load the first time.
+
 
 # Setup
 [how to setup angular, the cli and node correctly](https://gist.github.com/milesstanfield/17f980ad4ed6d038a255f8fc3b222add#file-angular-and-node-setup-md)
