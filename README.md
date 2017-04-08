@@ -61,7 +61,7 @@ curl -o ./server.js https://raw.githubusercontent.com/milesstanfield/ng4-webpack
 
 - install server dependencies for the server.js file
 ```
-npm install express method-override --save
+npm install express method-override compression --save-dev
 ```
 
 # webpack configuration
