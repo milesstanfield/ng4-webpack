@@ -22,7 +22,7 @@ ng serve -o
 "rimraf": "rimraf",
 "clean:aot": "npm run rimraf -- compiled",
 "clean:dist": "npm run rimraf -- dist",
-"build:prod": "npm run clean:dist && npm run clean:aot && npm run build --aot -prod",
+"build:prod": "npm run clean:dist && npm run clean:aot && npm run build --prod --aot",
 "start:prod": "node server.js",
 "heroku-postbuild": "npm run build:prod"
 ```
@@ -40,7 +40,7 @@ ng serve -o
 
 # Add the cli and cli/compiler dependencies so they can be used in the npm build scripts
 ```
-npm install @angular/cli@latest @angular/compiler-cli@latest --save
+npm install @angular/cli@latest @angular/compiler-cli@latest @angular/platform-server@latest @angular/animations@latest --save
 ```
 
 # install rimraf dev dependency (cleans up things)
