@@ -1,7 +1,7 @@
 # This is an example of how to create and deploy an angular 2+ app to production (Heroku) using the angular cli and webpack
 
 The Heroku link to this example site is [here](https://cryptic-sea-49784.herokuapp.com/)
-**NOTE:** I am still in the process of getting AOT working and also gzip in the build process
+
 
 # Setup
 [how to setup angular, the cli and node correctly](https://gist.github.com/milesstanfield/17f980ad4ed6d038a255f8fc3b222add#file-angular-and-node-setup-md)
