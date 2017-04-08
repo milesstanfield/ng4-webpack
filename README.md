@@ -28,6 +28,7 @@ ng serve -o
 ```
 
 - Add your specific Node and npm versions to the engines key in package.json
+
 **hint:** you can find your current versions by `node -v && npm -v`
 ```
   ...
@@ -61,14 +62,9 @@ curl -o ./server.js https://raw.githubusercontent.com/milesstanfield/ng4-webpack
 npm install express method-override --save
 ```
 
-# run npm install
-```
-npm install
-```
-
 # test that your production build is working
 ```
-npm run build:prod && npm run start:prod
+npm install && npm run build:prod && npm run start:prod
 ```
 
 # deploying to Heroku
