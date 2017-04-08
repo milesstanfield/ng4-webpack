@@ -11,6 +11,7 @@ app.use(express.static(__dirname + '/dist'));
 // route to handle all angular requests
 app.get('*', function(req, res) {
   res.sendFile(path.resolve(__dirname + '/dist/index.html'));
+  res.set('Content-Encoding', 'gzip');
 });
 
 app.listen(port, function() {
