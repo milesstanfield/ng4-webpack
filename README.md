@@ -41,8 +41,14 @@ ng serve -o
 
 # Add the cli and cli/compiler dependencies so they can be used in the npm build scripts
 ```
-npm install @angular/cli@latest @angular/compiler-cli@latest @angular/animations@latest @angular/platform-server@latest --save
+npm install @angular/cli@latest @angular/compiler-cli@latest @angular/animations@latest @angular/platform-server@latest @angular/compiler@latest --save
 ```
+
+# make sure the dev angular compiler dependency is the exact same as the others
+```
+npm install @angular/compiler-cli@latest --save-dev
+```
+
 
 # install rimraf dev dependency (cleans up things)
 ```
