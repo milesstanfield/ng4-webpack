@@ -8,7 +8,6 @@ The Heroku link to this example site is [here](https://cryptic-sea-49784.herokua
 
 
 # Create an angular app with the cli
-**note:** i've compiled some [basic cli usage docs](https://gist.github.com/milesstanfield/147de88d83e5b4eb790b7dd4fb615230#file-angular-cli-usage-md) you might find useful
 ```
 ng new my-angular-app && cd my-angular-app
 ```
