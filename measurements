@@ -1,0 +1,13 @@
+npm run build:prod
+
+main.bundle.js.gz  730 bytes          [emitted]
+polyfills.bundle.js      55 kB    0, 4  [emitted]         polyfills
+ styles.bundle.js    3.93 kB    2, 4  [emitted]         styles
+ vendor.bundle.js     644 kB    3, 4  [emitted]  [big]  vendor
+ inline.bundle.js    1.38 kB       4  [emitted]         inline
+   main.bundle.js    1.77 kB    1, 4  [emitted]         main
+styles.bundle.js.gz    1.75 kB          [emitted]
+inline.bundle.js.gz  744 bytes          [emitted]
+polyfills.bundle.js.gz    17.5 kB          [emitted]
+vendor.bundle.js.gz     154 kB          [emitted]
+     ./index.html  617 bytes          [emitted] 
