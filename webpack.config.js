@@ -191,12 +191,6 @@ module.exports = {
     ]
   },
   "plugins": [
-    new CompressionPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false, screw_ie8 : true },
-      output: { comments: false },
-      mangle: { screw_ie8 : true }
-    }),
     new NoEmitOnErrorsPlugin(),
     new GlobCopyWebpackPlugin({
       "patterns": [
@@ -297,8 +291,14 @@ module.exports = {
       },
       "exclude": [],
       "tsConfigPath": "src/tsconfig.app.json",
-      "skipCodeGeneration": true
-    })
+      "skipCodeGeneration": false
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false, screw_ie8 : true },
+      output: { comments: false },
+      mangle: { screw_ie8 : true }
+    }),
+    new CompressionPlugin()
   ],
   "node": {
     "fs": "empty",
