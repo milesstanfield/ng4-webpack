@@ -10,4 +10,16 @@ styles.bundle.js.gz    1.75 kB          [emitted]
 inline.bundle.js.gz  744 bytes          [emitted]
 polyfills.bundle.js.gz    17.5 kB          [emitted]
 vendor.bundle.js.gz     154 kB          [emitted]
-     ./index.html  617 bytes          [emitted] 
+     ./index.html  617 bytes          [emitted]
+
+
+
+
+
+cryptic-sea-49784.herokuapp.com	200	document	Other	965 B	113 ms
+inline.bundle.js	200	script	(index)	1.1 KB	150 ms
+polyfills.bundle.js	200	script	(index)	17.6 KB	235 ms
+styles.bundle.js	200	script	(index)	2.1 KB	223 ms
+vendor.bundle.js	200	script	(index)	152 KB	528 ms
+main.bundle.js	200	script	(index)	1.1 KB	148 ms
+favicon.ico	304	text/html	Other	293 B	81 ms
