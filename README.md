@@ -64,7 +64,7 @@ curl -o ./server.js https://raw.githubusercontent.com/milesstanfield/ng4-webpack
 npm install express method-override compression --save-dev
 ```
 
-# webpack configuration
+# Production Optimization
 - eject angular
 ```
 ng eject && npm install
@@ -75,20 +75,25 @@ ng eject && npm install
 npm install compression-webpack-plugin --save-dev
 ```
 
-- add this constant to the top with the others in `webpack.config.js`
+- add these constants to the top of the `webpack.config.js` file
 ```
 const webpack = require('webpack');
 const CompressionPlugin = require("compression-webpack-plugin");
 ```
 
-- add this to the top of the plugins list
+- change this to false in the `AotPlugin` in the `webpack.config.js` file
 ```
-new CompressionPlugin(),
+"skipCodeGeneration": false
+```
+
+- add this to the bottom of the plugins list in `webpack.config.js` file
+```
 new webpack.optimize.UglifyJsPlugin({
   compress: { warnings: false, screw_ie8 : true },
   output: { comments: false },
   mangle: { screw_ie8 : true }
 }),
+new CompressionPlugin()
 ```
 
 # test that your production build is working
